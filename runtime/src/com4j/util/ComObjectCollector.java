@@ -89,4 +89,12 @@ public class ComObjectCollector implements ComObjectListener {
             o.dispose();
         objects.clear();
     }
+    
+    /**
+     * Backwards compatibility
+     */
+    @Deprecated
+    public void diposeAll() {
+        this.disposeAll();
+    }
 }
