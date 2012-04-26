@@ -66,8 +66,6 @@ JNIEXPORT jobject JNICALL Java_com4j_Variant_get0(JNIEnv *env, jobject, jobject 
 	return variantToObject(env, NULL, *var);
 }
 
-
-
 class VariantHandler {
 public:
 	// returnss VARIANT allocated by 'new'
@@ -119,12 +117,11 @@ class ComObjectVariandHandlerImpl : public VariantHandlerImpl<VT_DISPATCH,xducer
 
 		// if the return type is an interface, use that to create a strongly typed object.
 		// otherwise just return it as Com4jObject
-		if(env->IsSameObject(retType,javaLangObject)) {
+		if(env->IsSameObject(retType,javaLangObject) || env->IsSameObject(retType,com4j_Com4jObject)) {
 			return o;
 		} else {
 			jobject o2 = com4jWrapper_queryInterface(env,o,retType);
-			com4jWrapper_dispose(env, o);	//We need to dispose o eagerly here or 
-											//we will have to wait for the GC to dispose
+			//TODO:  release o.  Otherwise we will have to wait for garbage collection.
 			return o2;
 		}
 	}
