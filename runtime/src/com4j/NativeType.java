@@ -256,16 +256,7 @@ public enum NativeType {
         Object toNative(Object param) {
             if(param==null)
                 return 0L;
-            
-            //According to the COM calling convention we need to addRef
-            //before we pass it.  If the param is an in parameter, we 
-            //will end up creating a new wrapper in toJava() that will
-            //release it when dispose()'d.  If it is an out or in-out, the 
-            //callee is responsible to addRef before returning it, so we 
-            //will assume ownership of the caller's ref in toJava.
-            //
-            //See http://msdn.microsoft.com/en-us/library/ms810016.aspx
-            Native.addRef(((Com4jObject)param).getPointer());
+
             return ((Com4jObject)param).getPointer();
         }
 
@@ -284,9 +275,9 @@ public enum NativeType {
                 base.dispose();
                 return new ComCollection(itemType,enumVar);
             }
-
-            //Don't addRef here.  For out params we assume ownership, and for in params
-            //we addRef'd already in toNative().
+            
+            // interface pointers we get from out parameters are owned by the caller,
+            // so there's no need to do addRef
             return Wrapper.create( (Class<? extends Com4jObject>)type, (Long)param );
         }
     },

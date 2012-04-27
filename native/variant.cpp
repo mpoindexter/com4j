@@ -117,11 +117,11 @@ class ComObjectVariandHandlerImpl : public VariantHandlerImpl<VT_DISPATCH,xducer
 
 		// if the return type is an interface, use that to create a strongly typed object.
 		// otherwise just return it as Com4jObject
-		if(env->IsSameObject(retType,javaLangObject) || env->IsSameObject(retType,com4j_Com4jObject)) {
+		if(env->IsSameObject(retType,javaLangObject) || env->IsSameObject(retType,com4j_Com4jObject))
 			return o;
-		} else {
+		else {
 			jobject o2 = com4jWrapper_queryInterface(env,o,retType);
-			//TODO:  release o.  Otherwise we will have to wait for garbage collection.
+			com4jWrapper_dispose(env,o);
 			return o2;
 		}
 	}
