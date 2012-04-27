@@ -82,7 +82,7 @@
 				Name="VCLinkerTool"
 				OutputFile="$(OutDir)/com4j.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../libffi/Debug;../jnitl/lib"
+				AdditionalLibraryDirectories="../jnitl/lib"
 				ModuleDefinitionFile="com4j.def"
 				TypeLibraryFile=""
 				GenerateDebugInformation="true"
@@ -171,10 +171,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libffi.lib"
 				OutputFile="$(OutDir)/com4j.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../libffi/x64/Debug;../jnitl/lib/x64"
+				AdditionalLibraryDirectories="../jnitl/lib/x64"
 				ModuleDefinitionFile="com4j.def"
 				TypeLibraryFile=""
 				GenerateDebugInformation="true"
@@ -264,10 +263,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="../libffi/Release/libffi.lib"
 				OutputFile="$(OutDir)/com4j.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="../libffi/Release;../jnitl/lib"
+				AdditionalLibraryDirectories="../jnitl/lib"
 				ModuleDefinitionFile="com4j.def"
 				TypeLibraryFile="$(IntDir)/$(ProjectName).tlb"
 				GenerateDebugInformation="true"
@@ -359,10 +357,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libffi.lib"
 				OutputFile="$(OutDir)/com4j.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="../libffi/x64/Release;../jnitl/lib/x64"
+				AdditionalLibraryDirectories="../jnitl/lib/x64"
 				ModuleDefinitionFile="com4j.def"
 				TypeLibraryFile="$(IntDir)/$(ProjectName).tlb"
 				GenerateDebugInformation="true"
